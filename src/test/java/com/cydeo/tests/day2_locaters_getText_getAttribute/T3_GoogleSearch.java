@@ -17,6 +17,7 @@ public class T3_GoogleSearch {
         //2- Go to: https://google.com
         driver.get("https://google.com");
 
+        //bypass google cookies
         WebElement cookiesButton = driver.findElement(By.id("L2AGLb"));
         cookiesButton.click();
 
