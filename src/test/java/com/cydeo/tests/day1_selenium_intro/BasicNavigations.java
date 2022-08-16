@@ -14,7 +14,7 @@ public class BasicNavigations {
         WebDriver driver = new ChromeDriver();
         //maximize the browser size
         driver.manage().window().maximize();
-        //doesnt work for windows: for mac
+        //Doesnt work for windows: for mac
         driver.manage().window().fullscreen();
 
         //go to  tesla.com

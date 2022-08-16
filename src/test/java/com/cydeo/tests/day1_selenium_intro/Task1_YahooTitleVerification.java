@@ -26,5 +26,6 @@ public class Task1_YahooTitleVerification {
             System.out.println("Failed verification");
         }
 
+        driver.close();
     }
 }

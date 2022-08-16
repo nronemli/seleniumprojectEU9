@@ -17,6 +17,5 @@ public class SeleniumTest {
         //selenium method :Get
         driver.get("https://www.facebook.com");
 
-
     }
 }
