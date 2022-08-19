@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class T3_GoogleSearch {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         //1- Open a chrome browser
         WebDriverManager.chromedriver().setup();
@@ -32,7 +32,7 @@ public class T3_GoogleSearch {
 
         if (actualInTitle.startsWith(exceptedInTitle)) {
             System.out.println("Title verification PASSED");
-        } else {
+        }else{
             System.out.println("Title verification FAILED");
         }
 
