@@ -2,6 +2,7 @@ package com.cydeo.tests.day7_webTables_utilities;
 
 import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.CRM_Utilities;
+import com.cydeo.utilities.ConfigurationReader;
 import com.cydeo.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,8 +14,19 @@ import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
 public class T3_CRM_LOGIN {
-
     WebDriver driver;
+    @BeforeMethod
+    public void setupMethod() {
+        driver = WebDriverFactory.getDriver("chrome");
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    }
+
+
+    @AfterMethod
+    public void tearDown() {
+        driver.close();
+    }
 
     @Test
     public void crm_login_test() {
@@ -34,12 +46,6 @@ public class T3_CRM_LOGIN {
         BrowserUtils.verifyTitle(driver, "Portal");
     }
 
-    @BeforeMethod
-    public void setupMethod() {
-        driver = WebDriverFactory.getDriver("chrome");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    }
 
     @Test
     public void crm_login_test_2() {
@@ -47,23 +53,27 @@ public class T3_CRM_LOGIN {
         driver.get("https://login1.nextbasecrm.com/");
         CRM_Utilities.crm_login(driver);
         //6. Verify title is as expected:
-        //Expected: Portal
-        BrowserUtils.verifyTitle(driver, "Portal");
+        //Expected: Portal"
+        BrowserUtils.verifyTitle(driver, "(19) Portal");
     }
-
     @Test
     public void crm_login_test_3(){
         driver.get("https://login1.nextbasecrm.com/");
-        CRM_Utilities.crm_login(driver,"Helpdesk2@cybertekschool.com","UserUser");
-        BrowserUtils.verifyTitle(driver,"Portal");
+        CRM_Utilities.crm_login(driver);
+        BrowserUtils.verifyTitle(driver,"(19) Portal");
     }
 
+    @Test
+    public void crm_login_test4(){
+        driver.get(ConfigurationReader.getProperty("env"));
+        WebElement inputTextBox = driver.findElement(By.xpath("//input[@class='login-inp']"));
+        inputTextBox.sendKeys(ConfigurationReader.getProperty("username"));
+        WebElement inputPassword = driver.findElement(By.xpath("//input[@name='USER_PASSWORD']"));
+        inputPassword.sendKeys(ConfigurationReader.getProperty("password"));
+        WebElement loginButton = driver.findElement(By.xpath("//input[@class='login-btn']"));
+        loginButton.click();
+        BrowserUtils.verifyTitle(driver, "(19) Portal");
 
-
-
-    @AfterMethod
-    public void tearDownMethod(){
-        driver.close();
     }
 }
 /*

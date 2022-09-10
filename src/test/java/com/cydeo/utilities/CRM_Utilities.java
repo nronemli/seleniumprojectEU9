@@ -14,10 +14,10 @@ public class CRM_Utilities {
     public static void crm_login(WebDriver driver) {
         //3. Enter valid username
         WebElement inputTextBox = driver.findElement(By.xpath("//input[@class='login-inp']"));
-        inputTextBox.sendKeys("helpdesk1@cybertekschool.com");
+        inputTextBox.sendKeys(ConfigurationReader.getProperty("username"));
         //4. Enter valid password
         WebElement inputPassword = driver.findElement(By.xpath("//input[@name='USER_PASSWORD']"));
-        inputPassword.sendKeys("UserUser");
+        inputPassword.sendKeys(ConfigurationReader.getProperty("password"));
         //5. Click to `Log In` button
         WebElement loginButton = driver.findElement(By.xpath("//input[@class='login-btn']"));
         loginButton.click();
