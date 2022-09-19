@@ -6,7 +6,6 @@ public class Singleton {
     public Singleton() {
 
     }
-
     //Create private static String
     //prevent access and provide a getter
     private static String word;

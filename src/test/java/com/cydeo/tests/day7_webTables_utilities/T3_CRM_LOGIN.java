@@ -1,9 +1,6 @@
 package com.cydeo.tests.day7_webTables_utilities;
 
-import com.cydeo.utilities.BrowserUtils;
-import com.cydeo.utilities.CRM_Utilities;
-import com.cydeo.utilities.ConfigurationReader;
-import com.cydeo.utilities.WebDriverFactory;
+import com.cydeo.utilities.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -46,7 +43,6 @@ public class T3_CRM_LOGIN {
         BrowserUtils.verifyTitle(driver, "Portal");
     }
 
-
     @Test
     public void crm_login_test_2() {
         //2. Go to : http://login1.nextbasecrm.com/
@@ -62,18 +58,11 @@ public class T3_CRM_LOGIN {
         CRM_Utilities.crm_login(driver);
         BrowserUtils.verifyTitle(driver,"(19) Portal");
     }
-
     @Test
     public void crm_login_test4(){
         driver.get(ConfigurationReader.getProperty("env"));
-        WebElement inputTextBox = driver.findElement(By.xpath("//input[@class='login-inp']"));
-        inputTextBox.sendKeys(ConfigurationReader.getProperty("username"));
-        WebElement inputPassword = driver.findElement(By.xpath("//input[@name='USER_PASSWORD']"));
-        inputPassword.sendKeys(ConfigurationReader.getProperty("password"));
-        WebElement loginButton = driver.findElement(By.xpath("//input[@class='login-btn']"));
-        loginButton.click();
+        CRM_login.crm_login(driver);
         BrowserUtils.verifyTitle(driver, "(19) Portal");
-
     }
 }
 /*

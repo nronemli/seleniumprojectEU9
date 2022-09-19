@@ -19,11 +19,9 @@ public class Driver {
     //Private:we want to close access from outside the class
     //Static:we will use it in a static method
     private static WebDriver driver;
-
-
     //Getter for Webdriver
-    public static WebDriver getDriver() {
-        if (driver == null) {
+    public static WebDriver getDriver(){
+        if (driver == null){
             //read browserType from configuration.properties and use a switch to choose
             String browserType = ConfigurationReader.getProperty("browser");
            //if statement will determine which browser will be opened
@@ -48,6 +46,11 @@ public class Driver {
         }
         return driver;
     }
-
-
+    //This method wil make sure our driver value is always null after using quit()method
+    public static void closeDriver(){
+        if(driver!=null){
+            driver.quit(); //this line will terminate the existing session. Value will not even be null
+            driver=null;
+        }
+    }
 }

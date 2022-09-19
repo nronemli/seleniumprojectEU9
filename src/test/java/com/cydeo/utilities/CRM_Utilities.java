@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 
 public class CRM_Utilities {
 
-
     /*
     This method will loging with helpdesk1@cybertekschool.com
     wehen it is called
@@ -22,7 +21,6 @@ public class CRM_Utilities {
         WebElement loginButton = driver.findElement(By.xpath("//input[@class='login-btn']"));
         loginButton.click();
     }
-
 
     public static void crm_login(WebDriver driver,String username, String password){
         //3. Enter valid username

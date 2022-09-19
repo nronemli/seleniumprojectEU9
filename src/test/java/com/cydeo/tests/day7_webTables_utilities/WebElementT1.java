@@ -22,15 +22,12 @@ public class WebElementT1 {
         deleteButton.click();
         WebElement homeButton= driver.findElement(By.xpath("//a[@class='nav-link']"));
         homeButton.click();
-
     }
-
     @BeforeMethod
     public void setupMethod() {
         driver = WebDriverFactory.getDriver("chrome");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
     }
 
     @AfterMethod
