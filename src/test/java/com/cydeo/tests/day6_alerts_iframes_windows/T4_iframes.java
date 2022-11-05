@@ -13,7 +13,6 @@ import java.util.concurrent.TimeUnit;
 
 public class T4_iframes {
     WebDriver driver;
-
     @Test
     public void iframesTest() {
         //switch drivers focus to iframe
@@ -33,7 +32,6 @@ public class T4_iframes {
         WebElement headerText= driver.findElement(By.xpath("//h3[.='An iFrame containing the TinyMCE WYSIWYG Editor']"));
         Assert.assertTrue(headerText.isDisplayed());
     }
-
     @BeforeClass
     public void setupMethod() {
         driver = WebDriverFactory.getDriver("chrome");
